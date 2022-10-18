@@ -1,0 +1,13 @@
+require("alqaholic.options")
+require("alqaholic.keybindings")
+require("alqaholic.plugins")
+require("alqaholic.plugin_list")
+require("alqaholic.treesitter")
+require("alqaholic.file_tree")
+require("alqaholic.statusline")
+require("alqaholic.completion")
+require("alqaholic.lsp")
+require("alqaholic.snippet")
+
+vim.cmd([[ colorscheme tokyonight ]])
+-- vim.cmd([[ highlight Normal guibg=none ]])
