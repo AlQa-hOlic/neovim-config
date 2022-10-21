@@ -1,5 +1,11 @@
 local utils = require("alqaholic.utils")
-local lspconfig = utils.safe_require("lspconfig")
+local import = utils.safe_require
+
+local lspconfig = import("lspconfig")
+
+if not lspconfig then
+	return
+end
 
 local format_on_save_file_paths = {}
 

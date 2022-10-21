@@ -1,8 +1,23 @@
 local utils = require("alqaholic.utils")
+local import = utils.safe_require
 
-local cmp = utils.safe_require("cmp")
-local lspkind = utils.safe_require("lspkind")
-local luasnip = utils.safe_require("luasnip")
+local cmp = import("cmp")
+
+if not cmp then
+	return
+end
+
+local lspkind = import("lspkind")
+
+if not lspkind then
+	return
+end
+
+local luasnip = import("luasnip")
+
+if not luasnip then
+	return
+end
 
 cmp.setup({
 	completion = {
@@ -23,7 +38,6 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 		{ name = "buffer", keyword_length = 4 }, -- Only use suggestions from buffer after 4 chars
 		{ name = "path " },
-		{ name = "nvim_lua" },
 	},
 	formatting = {
 		format = lspkind.cmp_format({
@@ -32,7 +46,6 @@ cmp.setup({
 			menu = {
 				buffer = "[Buf]",
 				nvim_lsp = "[LSP]",
-				nvim_lua = "[API]",
 				path = "[Path]",
 				luasnip = "[Snip]",
 			},

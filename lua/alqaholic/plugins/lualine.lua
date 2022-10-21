@@ -1,5 +1,11 @@
 local utils = require("alqaholic.utils")
-local lualine = utils.safe_require("lualine")
+local import = utils.safe_require
+
+local lualine = import("lualine")
+
+if not lualine then
+	return
+end
 
 lualine.setup({
 	options = {
