@@ -55,7 +55,16 @@ packer.startup(function(use)
 	use("kyazdani42/nvim-web-devicons")
 
 	-- appearance
-	use("folke/tokyonight.nvim")
+	-- use("folke/tokyonight.nvim")
+  use({
+    "ellisonleao/gruvbox.nvim",
+    config = function()
+      require("gruvbox").setup({
+        transparent_mode = true
+      })
+      vim.cmd("colorscheme gruvbox")
+    end
+  })
 	use("nvim-lualine/lualine.nvim")
 
 	-- utils
