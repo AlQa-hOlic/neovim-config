@@ -1,14 +1,10 @@
-local utils = require("alqaholic.utils")
-local import = utils.safe_require
-
-local telescope = import("telescope")
-
-if not telescope then
-	return
+local status, telescope = pcall(require, "telescope")
+if not status then
+  return
 end
 
 telescope.setup({
-	defaults = {
-		prompt_prefix = "   ",
-	},
+  defaults = {
+    prompt_prefix = "   ",
+  },
 })
