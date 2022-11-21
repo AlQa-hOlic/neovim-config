@@ -1,5 +1,11 @@
 local utils = require("alqaholic.utils")
-local lspconfig = utils.safe_require("lspconfig")
+local import = utils.safe_require
+
+local lspconfig = import("lspconfig")
+
+if not lspconfig then
+	return
+end
 
 local format_on_save_file_paths = {}
 
@@ -23,6 +29,9 @@ table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
 lspconfig.sumneko_lua.setup({
+	on_attach = function(client)
+		client.server_capabilities.document_formatting = false
+	end,
 	settings = {
 		Lua = {
 			runtime = {
@@ -33,9 +42,19 @@ lspconfig.sumneko_lua.setup({
 				-- Get the language server to recognize the `vim` global
 				globals = { "vim" },
 			},
+			format = {
+				enable = false,
+				--   -- Put format options here
+				--   -- NOTE: the value should be STRING!!
+				--   defaultConfig = {
+				--     indent_style = "space",
+				--     indent_size = "2",
+				--   }
+			},
 			workspace = {
 				-- Make the server aware of Neovim runtime files
 				library = vim.api.nvim_get_runtime_file("", true),
+				checkThirdParty = false,
 			},
 			-- Do not send telemetry data containing a randomized but unique identifier
 			telemetry = {
@@ -51,3 +70,19 @@ table.insert(format_on_save_file_paths, "*.lua")
 ------------------------------------------------------
 lspconfig.rust_analyzer.setup({})
 table.insert(format_on_save_file_paths, "*.rs")
+
+------------------------------------------------------
+-- TypeScript Language server, requires typescript,typescript-language-server
+------------------------------------------------------
+lspconfig.tsserver.setup({})
+
+------------------------------------------------------
+-- Java Language server, requires jdtls
+-- curl https://raw.githubusercontent.com/eruizc-dev/jdtls-launcher/master/install.sh | bash
+------------------------------------------------------
+lspconfig.jdtls.setup({
+	cmd = { "jdtls" },
+	root_dir = function(fname)
+		return require("lspconfig").util.root_pattern("pom.xml", "gradle.build", ".git")(fname) or vim.fn.getcwd()
+	end,
+})

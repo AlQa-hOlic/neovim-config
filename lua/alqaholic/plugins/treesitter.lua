@@ -1,4 +1,13 @@
-require("nvim-treesitter.configs").setup({
+local utils = require("alqaholic.utils")
+local import = utils.safe_require
+
+local treesitter = import("nvim-treesitter.configs")
+
+if not treesitter then
+	return
+end
+
+treesitter.setup({
 	highlight = {
 		enable = true,
 		additional_vim_regex_highlighting = false,
