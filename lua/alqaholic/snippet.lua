@@ -1,33 +1,31 @@
-local utils = require("alqaholic.utils")
-local luasnip = utils.safe_require("luasnip")
-
 local M = {}
--- Load in JSON snippets (VSCode syntax)
-local loader = utils.safe_require("luasnip.loaders.from_vscode")
 
-if not loader then
-	return
+local status, luasnip = pcall(require, "luasnip")
+if not status then
+  return
+end
+
+-- Load in JSON snippets (VSCode syntax)
+local status, loader = pcall(require, "luasnip.loaders.from_vscode")
+if not status then
+  return
 end
 
 -- Load only the filetype appropriate snippets
 loader.lazy_load({
-	paths = { vim.fn.stdpath("config") .. "/snippets" },
+  paths = { vim.fn.stdpath("config") .. "/snippets" },
 })
 
-if not luasnip then
-	return
-end
-
 function M.jump_to_next_field()
-	if luasnip.expand_or_jumpable() then
-		luasnip.expand_or_jump()
-	end
+  if luasnip.expand_or_jumpable() then
+    luasnip.expand_or_jump()
+  end
 end
 
 function M.jump_to_previous_field()
-	if luasnip.jumpable(-1) then
-		luasnip.jump(-1)
-	end
+  if luasnip.jumpable(-1) then
+    luasnip.jump(-1)
+  end
 end
 
 return M

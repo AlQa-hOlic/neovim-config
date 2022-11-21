@@ -1,10 +1,6 @@
-local utils = require("alqaholic.utils")
-local import = utils.safe_require
-
-local gitsigns = import("gitsigns")
-
-if not gitsigns then
-	return
+local status, gitsigns = pcall(require, "gitsigns")
+if not status then
+  return
 end
 
 gitsigns.setup()

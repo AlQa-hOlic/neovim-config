@@ -58,28 +58,28 @@ keymap.set("s", "<C-j>", "<cmd>lua require('alqaholic.snippet').jump_to_next_fie
 keymap.set("i", "<C-k>", "<cmd>lua require('alqaholic.snippet').jump_to_previous_field()<CR>")
 keymap.set("s", "<C-k>", "<cmd>lua require('alqaholic.snippet').jump_to_previous_field()<CR>")
 
-keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>")
-keymap.set("v", "<leader>ca", "<cmd>Lspsaga code_action<CR>")
-keymap.set("n", "gr", "<cmd>Lspsaga rename<CR>")
+-- keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>")
+-- keymap.set("v", "<leader>ca", "<cmd>Lspsaga code_action<CR>")
+-- keymap.set("n", "gr", "<cmd>Lspsaga rename<CR>")
 -- support tagstack C-t jump back
-keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>")
-keymap.set("n", "<leader>ld", "<cmd>Lspsaga show_line_diagnostics<CR>")
-keymap.set("n", "<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
+-- keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>")
+-- keymap.set("n", "<leader>ld", "<cmd>Lspsaga show_line_diagnostics<CR>")
+-- keymap.set("n", "<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
 -- keymap.set("n", "<leader>f", "<cmd>lua vim.lsp.buf.format { async = true }<CR>")
 
 -- Diagnsotic jump can use `<c-o>` to jump back
-keymap.set("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
-keymap.set("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
+-- keymap.set("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
+-- keymap.set("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
 
 -- Only jump to error
-keymap.set("n", "[E", "<cmd>lua require('lspsaga.diagnostic').goto_prev({ severity = vim.diagnostic.severity.ERROR })")
-keymap.set("n", "]E", "<cmd>lua require('lspsaga.diagnostic').goto_next({ severity = vim.diagnostic.severity.ERROR })")
+-- keymap.set("n", "[E", "<cmd>lua require('lspsaga.diagnostic').goto_prev({ severity = vim.diagnostic.severity.ERROR })")
+-- keymap.set("n", "]E", "<cmd>lua require('lspsaga.diagnostic').goto_next({ severity = vim.diagnostic.severity.ERROR })")
 
 -- Outline
-keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>")
+-- keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>")
 
 -- Hover Doc
-keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>")
+-- keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>")
 
 -- GitSigns preview hunk
-keymap.set("n", "<leader>gh", "<cmd>GitSigns preview_hunk_inline<CR>")
+-- keymap.set("n", "<leader>gh", "<cmd>GitSigns preview_hunk_inline<CR>")
