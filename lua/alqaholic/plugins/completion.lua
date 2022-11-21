@@ -30,6 +30,8 @@ cmp.setup({
 	},
 	mapping = cmp.mapping.preset.insert({
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
+		["<Tab>"] = cmp.mapping.select_next_item(),
+		["<S-Tab>"] = cmp.mapping.select_prev_item(),
 		["<Down>"] = cmp.mapping.select_next_item(),
 		["<Up>"] = cmp.mapping.select_prev_item(),
 	}),
@@ -41,14 +43,16 @@ cmp.setup({
 	},
 	formatting = {
 		format = lspkind.cmp_format({
-			with_text = true,
+			mode = "symbol_text",
+			-- with_text = true,
 			maxwidth = 50,
-			menu = {
-				buffer = "[Buf]",
-				nvim_lsp = "[LSP]",
-				path = "[Path]",
-				luasnip = "[Snip]",
-			},
+			ellipsis_char = "...",
+			-- menu = {
+			-- 	buffer = "[Buf]",
+			-- 	nvim_lsp = "[LSP]",
+			-- 	path = "[Path]",
+			-- 	luasnip = "[Snip]",
+			-- },
 		}),
 	},
 	experimental = {

@@ -1,4 +1,7 @@
 local o = vim.opt
+local g = vim.g
+
+o.fileencoding = "utf-8"
 
 -- line numbers
 o.relativenumber = true
@@ -17,19 +20,31 @@ o.wrap = false
 o.ignorecase = true
 o.smartcase = true
 
--- cursor line
-o.cursorline = true
-
 -- appearance
 o.termguicolors = true
 o.background = "dark"
+o.cursorline = true
+o.cursorlineopt = "line"
+o.colorcolumn = "120"
 o.signcolumn = "yes"
+o.laststatus = 3
+o.cmdheight = 0
+o.scrolloff = 10
 
 -- backspace
 o.backspace = "indent,eol,start"
 
 -- clipboard
 o.clipboard:append("unnamedplus")
+
+-- undo dir
+-- Undo dir (persistent undo's)
+local undodir = vim.env.HOME .. [[/.cache/nvim/undo]]
+if not vim.fn.isdirectory(undodir) then
+	vim.fn.mkdir(undodir)
+end
+g.undodir = undodir
+g.undofile = true
 
 -- split windows
 o.splitright = true

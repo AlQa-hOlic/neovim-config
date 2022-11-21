@@ -3,7 +3,11 @@ local luasnip = utils.safe_require("luasnip")
 
 local M = {}
 -- Load in JSON snippets (VSCode syntax)
-local loader = require("luasnip.loaders.from_vscode")
+local loader = utils.safe_require("luasnip.loaders.from_vscode")
+
+if not loader then
+	return
+end
 
 -- Load only the filetype appropriate snippets
 loader.lazy_load({

@@ -56,31 +56,59 @@ packer.startup(function(use)
 
 	-- appearance
 	-- use("folke/tokyonight.nvim")
-  use({
-    "ellisonleao/gruvbox.nvim",
-    config = function()
-      require("gruvbox").setup({
-        transparent_mode = true
-      })
-      vim.cmd("colorscheme gruvbox")
-    end
-  })
-	use("nvim-lualine/lualine.nvim")
+	use({
+		"ellisonleao/gruvbox.nvim",
+		config = function()
+			require("gruvbox").setup({
+				transparent_mode = true,
+			})
+			vim.cmd("colorscheme gruvbox")
+		end,
+	})
+	use({
+		"nvim-lualine/lualine.nvim",
+		config = function()
+			require("alqaholic.plugins.lualine")
+		end,
+	})
 
 	-- utils
-	use("numToStr/Comment.nvim")
+	use({
+		"numToStr/Comment.nvim",
+		config = function()
+			require("alqaholic.plugins.comment")
+		end,
+	})
 	use("christoomey/vim-tmux-navigator")
 	-- use 'tpope/vim-surround'
 
-	use("nvim-tree/nvim-tree.lua")
-	use("nvim-telescope/telescope.nvim")
-	use("lewis6991/gitsigns.nvim")
+	use({
+		"nvim-tree/nvim-tree.lua",
+		config = function()
+			require("alqaholic.plugins.nvim-tree")
+		end,
+	})
+	use({
+		"nvim-telescope/telescope.nvim",
+		config = function()
+			require("alqaholic.plugins.telescope")
+		end,
+	})
+	use({
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("alqaholic.plugins.gitsigns")
+		end,
+	})
 
 	-- intellisense
 	use({
 		"nvim-treesitter/nvim-treesitter", -- Treesitter AST parser.
 		run = function()
 			require("nvim-treesitter.install").update({ with_sync = true })
+		end,
+		config = function()
+			require("alqaholic.plugins.treesitter")
 		end,
 	})
 	use({
@@ -89,7 +117,12 @@ packer.startup(function(use)
 			require("nvim-autopairs").setup()
 		end,
 	})
-	use("neovim/nvim-lspconfig")
+	use({
+		"neovim/nvim-lspconfig",
+		config = function()
+			require("alqaholic.plugins.lsp")
+		end,
+	})
 	use("glepnir/lspsaga.nvim")
 	use({
 		"hrsh7th/nvim-cmp",
@@ -101,6 +134,9 @@ packer.startup(function(use)
 			"L3MON4D3/LuaSnip",
 			"onsails/lspkind-nvim",
 		},
+		config = function()
+			require("alqaholic.plugins.completion")
+		end,
 	})
 
 	-- Automatically set up your configuration after cloning packer.nvim
