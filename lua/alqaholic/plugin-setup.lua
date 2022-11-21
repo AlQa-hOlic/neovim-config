@@ -68,6 +68,7 @@ return packer.startup(function(use)
     end,
   })
   use("windwp/nvim-autopairs")
+  use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" })
 
   use("L3MON4D3/LuaSnip")
 
