@@ -18,10 +18,12 @@ null_ls.setup({
     --  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
     formatting.prettier, -- js/ts formatter
     formatting.stylua, -- lua formatter
+    formatting.black,
     diagnostics.eslint_d.with({ -- js/ts linter
       -- only enable eslint if root has .eslintrc.js (not in youtube nvim video)
       condition = function(utils)
-        return utils.root_has_file(".eslintrc.js") -- change file extension if you use something else
+        -- change file extension if you use something else
+        return utils.root_has_file(".eslintrc.js") or utils.root_has_file(".eslintrc.json")
       end,
     }),
   },
@@ -34,6 +36,7 @@ null_ls.setup({
         buffer = bufnr,
         callback = function()
           vim.lsp.buf.format({
+            timeout_ms = 2000,
             filter = function(client)
               --  only use null-ls for formatting instead of lsp server
               return client.name == "null-ls"

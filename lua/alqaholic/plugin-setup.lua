@@ -55,6 +55,16 @@ return packer.startup(function(use)
   use("nvim-tree/nvim-tree.lua")
   use("nvim-telescope/telescope.nvim")
   use("lewis6991/gitsigns.nvim")
+  use({
+    "rcarriga/nvim-notify",
+    config = function()
+      vim.notify = require("notify")
+      vim.notify.setup({
+        stages = "fade",
+        render = "minimal",
+      })
+    end,
+  })
 
   use("numToStr/Comment.nvim")
   use("christoomey/vim-tmux-navigator")
@@ -83,7 +93,7 @@ return packer.startup(function(use)
   use("williamboman/mason-lspconfig.nvim")
 
   use("neovim/nvim-lspconfig")
-  use("jose-elias-alvarez/typescript.nvim")
+  -- use("jose-elias-alvarez/typescript.nvim")
   use("glepnir/lspsaga.nvim")
 
   use("jose-elias-alvarez/null-ls.nvim")
